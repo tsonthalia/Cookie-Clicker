@@ -1,0 +1,47 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="clicker.css">
+  </head>
+  <body>
+    <h1>Cookie Clicker</h1>
+    <img id="cookie" src="http://vignette4.wikia.nocookie.net/cookieclicker/images/5/5a/PerfectCookie.png/revision/latest?cb=20130827014912">
+    <h2 id="score">Cookies: 0</h2>
+    <button>Factory: 10 Cookies</button>
+    <h3>Number of Factories: 0</h3>
+
+    <script>
+      //creates variables
+      var cookieImg = document.getElementById('cookie')
+      var scoreCounter = document.getElementById('score')
+      var number = 0
+      var factory = document.querySelector('button')
+      var factoryNumber = 0
+      var factoryScore = document.querySelector('h3')
+      var factoryCost = 10
+
+      //create function for when cookie is clicked
+      cookieImg.onclick = function() {
+        number = number + 1
+        scoreCounter.innerHTML = "Cookies: " + number
+      }
+
+      //when factory button is clicked
+      factory.onclick = function() {
+        if (number >= factoryCost) {
+          number = number - factoryCost
+          scoreCounter.innerHTML = "Cookies: " + number
+          factoryNumber = factoryNumber + 1
+          factoryScore.innerHTML = "Number of Factories: " + factoryNumber
+          factoryCost = factoryCost + 10
+          factory.innerHTML = "Factory: " + factoryCost + " Cookies"
+        }
+      }
+
+      //uses setInterval function to add cookie per second
+      setInterval(function() {
+        number = number + factoryNumber
+        scoreCounter.innerHTML = "Cookies: " + number
+      }, 1000)
+    </script>
+  </body>
+</html>
